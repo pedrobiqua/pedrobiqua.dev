@@ -1,0 +1,395 @@
+/**
+ * Reset some basic elements
+ */
+body, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, hr,
+dl, dd, ol, ul, figure {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/**
+ * Basic styling
+ */
+body {
+  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+  color: $text-color;
+  background-color: $background-color;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-feature-settings: "kern" 1;
+     -moz-font-feature-settings: "kern" 1;
+       -o-font-feature-settings: "kern" 1;
+          font-feature-settings: "kern" 1;
+  font-kerning: normal;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+%vertical-rhythm {
+  margin-bottom: $spacing-unit * 0.5;
+}
+
+
+
+/**
+ * `main` element
+ */
+main {
+  display: block; /* Default value of `display` of `main` element is 'inline' in IE 11. */
+}
+
+
+
+/**
+ * Images
+ */
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+
+
+/**
+ * Figures
+ */
+figure > img {
+  display: block;
+}
+
+figcaption {
+  font-size: $small-font-size;
+}
+
+
+
+/**
+ * Lists
+ */
+ul, ol {
+  margin-left: $spacing-unit;
+}
+
+li {
+  > ul,
+  > ol {
+    margin-bottom: 0;
+  }
+}
+
+
+
+/**
+ * Headings
+ */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $base-font-weight;
+}
+
+
+
+/**
+ * Links
+ */
+a {
+  color: $brand-color;
+  text-decoration: none;
+
+  &:visited {
+    color: darken($brand-color, 15%);
+  }
+
+  &:hover {
+    color: $text-color;
+    text-decoration: underline;
+  }
+
+  .social-media-list &:hover {
+    text-decoration: none;
+
+    .username {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+/**
+ * Blockquotes
+ */
+blockquote {
+  color: $grey-color;
+  border-left: 4px solid $grey-color-light;
+  padding-left: $spacing-unit * 0.5;
+  @include relative-font-size(1.125);
+  letter-spacing: -1px;
+  font-style: italic;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+
+/**
+ * Code formatting
+ */
+pre,
+code {
+  @include relative-font-size(0.9375);
+  border: 1px solid $grey-color-light;
+  border-radius: 3px;
+  background-color: #eef;
+}
+
+code {
+  padding: 1px 5px;
+}
+
+pre {
+  padding: 8px 12px;
+  overflow-x: auto;
+
+  > code {
+    border: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+
+
+/**
+ * Wrapper
+ */
+.wrapper {
+  max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
+  max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $spacing-unit;
+  padding-left: $spacing-unit;
+  @extend %clearfix;
+
+  @include media-query($on-laptop) {
+    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
+    max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+    padding-right: $spacing-unit * 0.5;
+    padding-left: $spacing-unit * 0.5;
+  }
+}
+
+/**
+ * Wrapper para uma página específica
+ */
+ .custom-wrapper {
+  max-width: -webkit-calc(#{$content-width} + (#{$spacing-unit} * 5));
+  max-width:         calc(#{$content-width} + (#{$spacing-unit} * 5));
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $spacing-unit * 2;  /* Aumentando o padding à direita */
+  padding-left: $spacing-unit * 2;   /* Aumentando o padding à esquerda */
+  @extend %clearfix;
+
+  @include media-query($on-laptop) {
+    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
+    max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+    padding-right: $spacing-unit * 1;  /* Ajustando padding para a versão menor de tela */
+    padding-left: $spacing-unit * 1;   /* Ajustando padding para a versão menor de tela */
+  }
+}
+
+
+
+/**
+ * Clearfix
+ */
+%clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+/**
+ * Icons
+ */
+
+.svg-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    fill: #{$grey-color};
+    padding-right: 5px;
+    vertical-align: text-top;
+}
+
+.social-media-list {
+  li + li {
+    padding-top: 5px;
+  }
+}
+
+
+
+/**
+ * Tables
+ */
+table {
+  margin-bottom: $spacing-unit;
+  width: 100%;
+  text-align: $table-text-align;
+  color: lighten($text-color, 18%);
+  border-collapse: collapse;
+  border: 1px solid $grey-color-light;
+  tr {
+    &:nth-child(even) {
+      background-color: lighten($grey-color-light, 6%);
+    }
+  }
+  th, td {
+    padding: ($spacing-unit * 0.3333333333) ($spacing-unit * 0.5);
+  }
+  th {
+    background-color: lighten($grey-color-light, 3%);
+    border: 1px solid darken($grey-color-light, 4%);
+    border-bottom-color: darken($grey-color-light, 12%);
+  }
+  td {
+    border: 1px solid $grey-color-light;
+  }
+}
+
+/* _sass/card.scss */
+
+$card-bg-color: #fff;
+$card-border-color: #ddd;
+$card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+$card-hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+$card-radius: 10px;
+$card-padding: 20px;
+$card-transition: all 0.3s ease-in-out;
+$card-header-bg: #f5f5f5;
+$card-header-color: #333;
+$card-body-color: #666;
+$card-footer-color: #999;
+
+.card {
+  background-color: $card-bg-color;
+  border: 1px solid $card-border-color;
+  border-radius: $card-radius;
+  box-shadow: $card-shadow;
+  overflow: hidden;
+  padding: $card-padding;
+  margin:10px;
+  transition: $card-transition;
+
+  &:hover {
+    box-shadow: $card-hover-shadow;
+    transform: translateY(-5px);
+  }
+
+  .card-header {
+    background-color: $card-header-bg;
+    color: $card-header-color;
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 15px;
+  }
+
+  .card-body {
+    color: $card-body-color;
+    font-size: 1rem;
+    padding: 15px;
+    line-height: 1.6;
+  }
+
+  .card-footer {
+    text-align: right;
+    color: $card-footer-color;
+    font-size: 0.875rem;
+    padding: 15px;
+    background-color: #fafafa;
+  }
+}
+
+/* Estilo para a seção do perfil */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+
+  .profile-photo {
+    img {
+      max-width: 200px;
+      height: auto;
+      border-radius: 50%;
+    }
+  }
+
+  .profile-text {
+    flex: 1;
+    text-align: justify;
+  }
+}
+
+/* Adicionar espaçamento superior à seção de notícias */
+.news-section {
+  margin-top: 40px;
+}
+
+/* Estilo para os itens da notícia */
+.news-item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+/* Media query para telas menores, como celulares */
+@media (max-width: 768px) {
+  .profile {
+    flex-direction: column; /* Coloca os itens em uma coluna em telas menores */
+    align-items: flex-start; /* Alinha os itens à esquerda */
+    gap: 20px; /* Reduz o espaçamento entre a imagem e o texto */
+
+    .profile-photo {
+      img {
+        max-width: 150px; /* Reduz o tamanho da foto */
+      }
+    }
+
+    .profile-text {
+      text-align: left; /* Alinha o texto à esquerda */
+    }
+
+    /* Esconde a foto no celular */
+    .profile-photo {
+      display: none;
+    }
+  }
+}
+
